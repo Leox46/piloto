@@ -103,27 +103,26 @@ router.route('/pilotos/:piloto_id')
     });
   })
 
-/*
-  // update the assignment with this id
-  // (accessed at PUT http://localhost:8080/api/assignments/:assignment_id)
+
+  // update the piloto with this id
+  // (accessed at PUT http://localhost:8080/api/pilotos/:piloto_id)
   .put(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    // use our assignment model to find the assignment we want
+    // use our piloto model to find the piloto we want
     // ATTENZIONE!: usare findOne, e non find, altrimenti ritorna una collezione di oggetti, e bisogna estrarre il primo!
-    Assignment.findOne( {'assignmentId': req.params.assignment_id}, function (err, assignment) {
+    Piloto.findOne( {'pilotoId': req.params.piloto_id}, function (err, piloto) {
       if (err) { res.send(err); }
-      // update the assignments info
-      if(assignment != null){
-        if(req.body.assignmentId != null) assignment.assignmentId = req.body.assignmentId;
-      	if(req.body.studentId != null) assignment.studentId = req.body.studentId;
-      	if(req.body.assignment != null) assignment.assignment = req.body.assignment;
-      	if( req.body.assignmentType != null) assignment.assignmentType = req.body.assignmentType;
-      	if(req.body.assignmentValuation != null) assignment.assignmentValuation = req.body.assignmentValuation;
-        // save the assignment
-        assignment.save(function (err) {
+      // update the pilotos info
+      if(piloto != null){
+        if(req.body.pilotoId != null) piloto.pilotoId = req.body.pilotoId;
+      	if(req.body.name != null) piloto.name = req.body.name;
+      	if(req.body.surname != null) piloto.surname = req.body.surname;
+      	if( req.body.bike != null) piloto.bike = req.body.bike;
+        // save the piloto
+        piloto.save(function (err) {
           if (err) { res.send(err); }
-          res.json(assignment);
+          res.json(piloto);
         });
       }
       else{
@@ -133,7 +132,8 @@ router.route('/pilotos/:piloto_id')
     });
   })
 
-  // delete the assignment with this id
+/*
+  // delete the piloto with this id
   // (accessed at DELETE http://localhost:8080/api/assignments/:assignment_id)
   .delete(function (req, res) {
     res.status = 200;
