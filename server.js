@@ -88,21 +88,22 @@ router.route('/pilotos')
     }
   });
 
-/*
-// route /assignments/assignment
-router.route('/assignments/:assignment_id')
 
-  // get the assignment with that id
-  // (accessed at GET http://localhost:8080/api/assignments/:assignment_id)
+// route /pilotos/piloto
+router.route('/pilotos/:piloto_id')
+
+  // get the piloto with that id
+  // (accessed at GET http://localhost:8080/api/pilotos/:piloto_id)
   .get(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    Assignment.find( {'assignmentId': req.params.assignment_id}, function (err, assignment) {
+    Piloto.find( {'pilotoId': req.params.piloto_id}, function (err, piloto) {
       if (err) { res.send(err); }
-      res.json(assignment);
+      res.json(piloto);
     });
   })
 
+/*
   // update the assignment with this id
   // (accessed at PUT http://localhost:8080/api/assignments/:assignment_id)
   .put(function (req, res) {
