@@ -132,18 +132,18 @@ router.route('/pilotos/:piloto_id')
     });
   })
 
-/*
+
   // delete the piloto with this id
-  // (accessed at DELETE http://localhost:8080/api/assignments/:assignment_id)
+  // (accessed at DELETE http://localhost:8080/api/pilotos/:piloto_id)
   .delete(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    Assignment.remove( {'assignmentId': req.params.assignment_id}, function (err, assignment) {
+    Piloto.remove( {'pilotoId': req.params.piloto_id}, function (err, piloto) {
       if (err) { res.send(err); }
       res.json({ message: 'Successfully deleted' });
     });
   });
-*/
+
 
 
 
