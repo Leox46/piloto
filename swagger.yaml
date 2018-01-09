@@ -1,0 +1,126 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "Assignments"
+  description: Semplice API che permette di inserire, modificare e eliminare Assignments.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Swagger API Team
+    email: foo@example.com
+    url: http://madskristensen.net
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+host: assignmentbasemodel.herokuapp.com
+basePath: /api
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /assignments:
+    get:
+      description: |
+        Ritorna tutti gli assignments.
+      operationId: findAssignments
+      responses:
+        200:
+          description: assignment response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Assignment'
+    post:
+      description: |
+        Crea un assignment.
+      operationId: addAssignment
+      parameters:
+        - name: assignment
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Assignment'
+      responses:
+        200:
+          description: assignment response
+          schema:
+            $ref: '#/definitions/Assignment'
+            
+  /assignments/{id}:
+    get:
+      description: |
+        Ritorna l'assignment con l'assignmentId specificato.
+      operationId: findAssignmentById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          x-example: '46'
+      responses:
+        200:
+          description: assignment response
+          schema:
+            $ref: '#/definitions/Assignment'
+    delete:
+      description: |
+        Elimina l'Assignment con l'assignmentId specificato.
+      operationId: deleteAssignment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          x-example: '46'
+      responses:
+        204:
+          description: assignment deleted
+    put:
+      description: |
+        Modifica l'assignment con l'assignmentId specificato.
+      operationId: updateAssignmentById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          x-example: '46'
+        - name: assignment
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Assignment'
+      responses:
+        200:
+          description: assignment response
+          schema:
+            $ref: '#/definitions/Assignment'
+definitions:
+  Assignment:
+    required:
+      - assignmentId
+      - studentId
+      - assignment
+      - assignmentType
+      - assignmentValuation
+    properties:
+      assignmentId:
+        type: string
+      studentId:
+        type: string
+      assignment:
+        type: object
+        properties:
+          Domanda1:
+            type: string
+          Domanda2:
+            type: string
+        required:
+          - Domanda1
+          - Domanda2
+      assignmentType:
+        type: string
+      assignmentValuation:
+        type: number
