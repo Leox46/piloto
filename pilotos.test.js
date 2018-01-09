@@ -1,4 +1,4 @@
-const root = process.env.SERVER_URL || 'http://127.0.0.1:8080/api/v1' //'https://pilotobasemodel.herokuapp.com/api/v1'
+const root = process.env.SERVER_URL || 'https://pilotosapp.herokuapp.com/api/v1' //'http://127.0.0.1:8080/api/v1'
 const fetch = require("node-fetch")
 const pilotosRoot = root+'/pilotos'
 const examplePiloto =  {
