@@ -42,30 +42,30 @@ router.get('/', function (req, res) {
   res.json({ message: 'Welcome to our API!' });
 });
 
-/*
-router.route('/assignments')
 
-  // create a assignment
-  // accessed at POST http://localhost:8080/api/assignments
+router.route('/pilotos')
+
+  // create a piloto
+  // accessed at POST http://localhost:8080/api/pilotos
   .post(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    // create a new instance of the Assignment model
-    var assignment = new Assignment();
-    // set the assignments name (comes from the request)
-    assignment.assignmentId = req.body.assignmentId;
-  	assignment.studentId = req.body.studentId;
-  	assignment.assignment = req.body.assignment;
-  	assignment.assignmentType = req.body.assignmentType;
-  	assignment.assignmentValuation = req.body.assignmentValuation;
+    // create a new instance of the piloto model
+    var piloto = new Piloto();
+    // set the piloto name (comes from the request)
+    piloto.pilotoId = req.body.pilotoId;
+  	piloto.name = req.body.name;
+  	piloto.surname = req.body.surname;
+  	piloto.bike = req.body.bike;
 
-    // save the assignment and check for errors
-    assignment.save(function (err) {
+    // save the piloto and check for errors
+    piloto.save(function (err) {
       if (err) { res.send(err); }
-      res.json(assignment);
+      res.json(piloto);
     });
   })
 
+/*
   // get all the assignments
   // accessed at GET http://localhost:8080/api/assignments
   // variante: questo server risponde anche se gli viene specificata come query
