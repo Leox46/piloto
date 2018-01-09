@@ -5,7 +5,7 @@ const examplePiloto =  {
     "pilotoId": "59",
     "name": "Leonardo",
     "surname": "Dal Ronco",
-    "bike": "Lambretta"
+    "bike": "Oxford"
 }
 // importante per il TEST COVERAGE!
 // const server = require('./server');
