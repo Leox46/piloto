@@ -65,29 +65,30 @@ router.route('/pilotos')
     });
   })
 
-/*
-  // get all the assignments
-  // accessed at GET http://localhost:8080/api/assignments
+
+  // get all the pilotos
+  // accessed at GET http://localhost:8080/api/pilotos
   // variante: questo server risponde anche se gli viene specificata come query
-  // del GET lo studentId, ritornando tutti gli assignment con lo studentId specificato.
-  // accessed at GET http://localhost:8080/api/assignments/?studentId=177928
+  // del GET lo studentId, ritornando tutti gli piloto con lo studentId specificato.
+  // accessed at GET http://localhost:8080/api/v1/pilotos/?bike=Yamaha
   .get(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    if(req.query.studentId == null) { // se NON è specificato lo studentId, allora ritorno tutti gli assignments
-      Assignment.find(function (err, assignments) {
+    if(req.query.bike == null) { // se NON è specificato la bike, allora ritorno tutti gli pilotos
+      Piloto.find(function (err, pilotos) {
         if (err) { res.send(err); }
-        res.json(assignments);
+        res.json(pilotos);
       });
     }
     else {
-      Assignment.find( {'studentId': req.query.studentId}, function (err, assignments) {
+      Piloto.find( {'bike': req.query.bike}, function (err, pilotos) {
         if (err) { res.send(err); }
-        res.json(assignments);
+        res.json(pilotos);
       });
     }
   });
 
+/*
 // route /assignments/assignment
 router.route('/assignments/:assignment_id')
 
