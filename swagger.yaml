@@ -1,8 +1,8 @@
 swagger: "2.0"
 info:
   version: 1.0.0
-  title: "Assignments"
-  description: Semplice API che permette di inserire, modificare e eliminare Assignments.
+  title: "Pilotos"
+  description: Semplice API che permette di inserire, modificare e eliminare Pilotos.
   termsOfService: http://swagger.io/terms/
   contact:
     name: Swagger API Team
@@ -11,8 +11,8 @@ info:
   license:
     name: MIT
     url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
-host: assignmentbasemodel.herokuapp.com
-basePath: /api
+host: pilotosapp.herokuapp.com
+basePath: /api/v1
 schemes:
   - http
 consumes:
@@ -20,39 +20,39 @@ consumes:
 produces:
   - application/json
 paths:
-  /assignments:
+  /pilotos:
     get:
       description: |
-        Ritorna tutti gli assignments.
-      operationId: findAssignments
+        Ritorna tutti gli pilotos.
+      operationId: findPilotos
       responses:
         200:
-          description: assignment response
+          description: piloto response
           schema:
             type: array
             items:
-              $ref: '#/definitions/Assignment'
+              $ref: '#/definitions/Piloto'
     post:
       description: |
-        Crea un assignment.
-      operationId: addAssignment
+        Crea un piloto.
+      operationId: addPiloto
       parameters:
-        - name: assignment
+        - name: piloto
           in: body
           required: true
           schema:
-            $ref: '#/definitions/Assignment'
+            $ref: '#/definitions/Piloto'
       responses:
         200:
-          description: assignment response
+          description: piloto response
           schema:
-            $ref: '#/definitions/Assignment'
+            $ref: '#/definitions/Piloto'
             
-  /assignments/{id}:
+  /pilotos/{id}:
     get:
       description: |
-        Ritorna l'assignment con l'assignmentId specificato.
-      operationId: findAssignmentById
+        Ritorna l'piloto con l'pilotoId specificato.
+      operationId: findPilotoById
       parameters:
         - name: id
           in: path
@@ -61,13 +61,13 @@ paths:
           x-example: '46'
       responses:
         200:
-          description: assignment response
+          description: piloto response
           schema:
-            $ref: '#/definitions/Assignment'
+            $ref: '#/definitions/Piloto'
     delete:
       description: |
-        Elimina l'Assignment con l'assignmentId specificato.
-      operationId: deleteAssignment
+        Elimina l'piloto con l'pilotoId specificato.
+      operationId: deletePiloto
       parameters:
         - name: id
           in: path
@@ -76,51 +76,40 @@ paths:
           x-example: '46'
       responses:
         204:
-          description: assignment deleted
+          description: piloto deleted
     put:
       description: |
-        Modifica l'assignment con l'assignmentId specificato.
-      operationId: updateAssignmentById
+        Modifica l'piloto con l'pilotoId specificato.
+      operationId: updatePilotoById
       parameters:
         - name: id
           in: path
           required: true
           type: string
           x-example: '46'
-        - name: assignment
+        - name: piloto
           in: body
           required: true
           schema:
-            $ref: '#/definitions/Assignment'
+            $ref: '#/definitions/Piloto'
       responses:
         200:
-          description: assignment response
+          description: piloto response
           schema:
-            $ref: '#/definitions/Assignment'
+            $ref: '#/definitions/Piloto'
 definitions:
-  Assignment:
+  Piloto:
     required:
-      - assignmentId
-      - studentId
-      - assignment
-      - assignmentType
-      - assignmentValuation
+      - pilotoId
+      - name
+      - surname
+      - bike
     properties:
-      assignmentId:
+      pilotoId:
         type: string
-      studentId:
+      name:
         type: string
-      assignment:
-        type: object
-        properties:
-          Domanda1:
-            type: string
-          Domanda2:
-            type: string
-        required:
-          - Domanda1
-          - Domanda2
-      assignmentType:
+      surname:
         type: string
-      assignmentValuation:
-        type: number
+      bike:
+        type: string
